@@ -1,3 +1,4 @@
+// for local compiles remove the HttpClient/ section of the include
 #include "HttpClient/HttpClient.h"
 
 int  ack_button   = D0;
