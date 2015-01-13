@@ -1,4 +1,3 @@
-//#include "HttpClient/HttpClient.h"
 #include "HttpClient.h"
 
 int  ack_button   = D0;
@@ -47,8 +46,8 @@ void setup()
 
 void loop()
 {
-    request.hostname = "192.168.1.10";
-//    request.hostname = "www.joelferrier.com";
+    request.hostname = "ec2-54-148-236-91.us-west-2.compute.amazonaws.com";
+//    request.hostname = "www.google.com";
     request.port = 80;
     request.path = "/index.json";
     
@@ -64,7 +63,6 @@ void loop()
         int resp_char = resp[i];
         if (isDigit(resp_char)) {
             current = resp_char - '0';
-            Serial.println(current);
         }
     }
 
@@ -78,28 +76,25 @@ void loop()
     
     if (emergency == true) {
         digitalWrite(help, HIGH);
-        delay(250);
+        delay(1000);
     } else {
         switch(current) {
             case 1:
                 digitalWrite(standby, HIGH);
-                delay(250);
+                delay(1000);
                 digitalWrite(standby, LOW);
-                delay(250);
                 //current = 2;
                 break;
             case 2:
                 digitalWrite(ready, HIGH);
-                delay(250);
+                delay(1000);
                 digitalWrite(ready, LOW);
-                delay(250);
                 //current = 3;
                 break;
             case 3:
                 digitalWrite(go, HIGH);
-                delay(250);
+                delay(1000);
                 digitalWrite(go, LOW);
-                delay(250);
                 //current = 1;
                 break;
         } //switch
